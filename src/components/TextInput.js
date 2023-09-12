@@ -9,6 +9,10 @@ export default function TextInput(props) {
     setText(text.toUpperCase());
   };
 
+  const handleLowerCase = () => {
+    setText(text.toLocaleLowerCase());
+  };
+
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
@@ -16,21 +20,34 @@ export default function TextInput(props) {
   const [text, setText] = useState("");
 
   return (
-    <div>
-      <h1>{props.heading}</h1>
-      <div className="mb-3">
-        <textarea
-          className="form-control"
-          value={text}
-          onChange={handleOnChange}
-          id="myBox"
-          rows="10"
-        ></textarea>
+    <>
+      <div className="container">
+        <h2>{props.heading}</h2>
+        <div className="mb-3">
+          <textarea
+            className="form-control"
+            value={text}
+            onChange={handleOnChange}
+            id="myBox"
+            rows="10"
+          ></textarea>
+        </div>
+        <button className="btn btn-primary mx-1" onClick={handleUpperCase}>
+          Upper Case
+        </button>
+        <button className="btn btn-primary mx-1" onClick={handleLowerCase}>
+          Lower Case
+        </button>
       </div>
-      <button className="btn btn-primary" onClick={handleUpperCase}>
-        Upper Case
-      </button>
-    </div>
+
+      <div className="container my-3">
+        <h2>Text Statistics</h2>
+        <p>
+          {text.split(" ").length} words and {text.length} characters.{" "}
+          {0.005 * text.split(" ").length} minutes read
+        </p>
+      </div>
+    </>
   );
 }
 
