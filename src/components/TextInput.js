@@ -13,6 +13,14 @@ export default function TextInput(props) {
     setText(text.toLocaleLowerCase());
   };
 
+  const handleClearCase = () => {
+    setText('');
+  };
+
+  const handleCopyText = () => {
+    navigator.clipboard.writeText(text);
+  };
+
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
@@ -28,6 +36,7 @@ export default function TextInput(props) {
             className="form-control"
             value={text}
             onChange={handleOnChange}
+            style={{backgroundColor: props.mode === 'dark' ? 'gray' : 'white'}}
             id="myBox"
             rows="10"
           ></textarea>
@@ -37,6 +46,12 @@ export default function TextInput(props) {
         </button>
         <button className="btn btn-primary mx-1" onClick={handleLowerCase}>
           Lower Case
+        </button>
+        <button className="btn btn-primary mx-1" onClick={handleClearCase}>
+          Clear
+        </button>
+        <button className="btn btn-primary mx-1" onClick={handleCopyText}>
+          Copy to Clipboard
         </button>
       </div>
 
