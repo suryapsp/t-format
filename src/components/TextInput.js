@@ -41,16 +41,16 @@ export default function TextInput(props) {
             rows="10"
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-1" onClick={handleUpperCase}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleUpperCase}>
           Upper Case
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleLowerCase}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleLowerCase}>
           Lower Case
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleClearCase}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleClearCase}>
           Clear
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleCopyText}>
+        <button className="btn btn-primary mx-1 my-1" onClick={handleCopyText}>
           Copy to Clipboard
         </button>
       </div>
@@ -58,8 +58,8 @@ export default function TextInput(props) {
       <div className="container my-3">
         <h2>Text Statistics</h2>
         <p>
-          {text.split(" ").length} words and {text.length} characters.{" "}
-          {0.005 * text.split(" ").length} minutes read
+          {text.split(" ").filter((element)=>{return element.length !== 0}).length} words and {text.length} characters.{" "}
+          {0.005 * text.split(" ").filter((element)=>{return element.length !== 0}).length} minutes read
         </p>
       </div>
     </>
